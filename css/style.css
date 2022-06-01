@@ -1,0 +1,256 @@
+:root {
+    --small-circle-size: 4px;
+    --small-circle-size-inner: 3px;
+    --large-circle-size: 14px;
+    --text-color: #ffe490;
+    --shadow-orange-1: #fabd5a;
+    --shadow-orange-2: #ffd44d;
+    --dark-orange-1: #ffd44d;
+    --white: #fff;
+    --text-width: 500;
+    --rotate-x: 0;
+    --rotate-y: 0;
+    --rotate-z: 0;
+    --x-position: 20;
+    --y-position: 100;
+    --rotate-duration: 2s;
+
+    --tp-value-width-v3: 200px;
+}
+
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    transform-style: preserve-3d;
+}
+
+.input_video {
+    display: none;
+}
+
+@keyframes glow-div-orange {
+    from {
+       filter: url(#shadow1);
+    }
+    to {
+       filter: url(#shadow2);
+    }
+}
+   
+@keyframes glow-div-orange-2 {
+    from {
+       filter: url(#glow-filter);
+    }
+    50% {
+        filter: url(#glow-mid-dark-filter);
+    }
+    70% {
+        filter: url(#glow-mid-light-filter);
+    }
+    to {
+        filter: url(#glow-light-filter);
+    }
+}
+
+@keyframes rotationleft {
+    from {
+        transform-origin: 20% 100px 0;
+        transform: rotateX(calc(var(--rotate-x, 25) * 1deg)) rotateY(calc(var(--rotate-y, 25) * 1deg)) rotateZ(360deg);
+    }
+    to {
+        transform-origin: 20% 100px 0;
+        transform: rotateX(calc(var(--rotate-x, 25) * 1deg)) rotateY(calc(var(--rotate-y, 25) * 1deg)) rotateZ(0deg);
+    }
+}
+
+@keyframes rotationright {
+    from {
+        transform-origin: 20% 100px 0;
+        transform: rotateX(calc(var(--rotate-x, 25) * 1deg)) rotateY(calc(var(--rotate-y, 25) * 1deg)) rotateZ(0deg);
+    }
+    to {
+        transform-origin: 20% 100px 0;
+        transform: rotateX(calc(var(--rotate-x, 25) * 1deg)) rotateY(calc(var(--rotate-y, 25) * 1deg)) rotateZ(360deg);
+    }
+}
+
+@keyframes polystar-rotation-right {
+    from {
+        transform: translateX(2.6%) translateY(-8.6px) rotate(22.2deg) scale(0.095);
+    }
+    to {
+        transform: translateX(0%) translateY(0px) rotate(0deg) scale(0.095);
+    }
+}
+
+@keyframes small-polystar-rotation-right {
+    from {
+        transform: translateX(1.4%) translateY(-5px) rotate(22.2deg) scale(0.053);
+    }
+    to {
+        transform: translateX(0%) translateY(0px) rotate(0deg) scale(0.053);
+    }
+}
+
+@keyframes medium-polystar-rotation-left {
+    from {
+        transform: translateX(-1.4%) translateY(10px) rotate(-22.2deg) scale(0.072);
+    }
+    to {
+        transform: translateX(0%) translateY(0px) rotate(0deg) scale(0.072);
+    }
+}
+
+@keyframes rectrotationright {
+    from {
+        transform-origin: 20% 100px 0;
+    }
+    to {
+        transform-origin: 20% 100px 0;
+        transform: rotate(17deg);
+    }
+}
+
+@keyframes rectrotationleft {
+    from {
+        transform-origin: 20% 100px 0;
+    }
+    to {
+        transform-origin: 20% 100px 0;
+        transform: rotate(-27deg);
+    }
+}
+
+@keyframes shield-filters {
+    from {
+        filter: url("#noise");
+    }
+    50% {
+        filter: url("#second-noise");
+    }
+    to {
+        filter: url("#third-noise");
+    }
+}
+
+@keyframes light-filters {
+    from {
+        filter: url("#light-noise");
+    }
+    to {
+        filter: url("#lighter-noise");
+    }
+}
+
+body {
+    background-color: #2d2d2d;
+    width: 100%;
+    height: 100%;
+}
+
+#wrapperSvg {
+    height: 90vh;
+    width: fit-content;
+}
+
+#shield {
+    display: block;
+    animation: shield-filters 3s infinite linear alternate;
+    height: 100vh;
+}
+
+#lines-group {
+    animation: light-filters 2s infinite linear alternate;
+}
+
+.text-circle {
+    fill: var(--text-color);
+    width: var(--text-width);
+    transform-origin: calc(var(--x-position, 20) * 1%) calc(var(--y-position, 100) * 1px) 0;
+    transform: rotateX(calc(var(--rotate-x, 25) * 1deg)) rotateY(calc(var(--rotate-y, 25) * 1deg)) rotateZ(calc(var(--rotate-z, 25) * 1deg));
+}
+
+.circle-inner {
+    animation: rotationleft 4s infinite linear, glow-div-orange 1.5s ease-in-out infinite alternate;
+}
+.circle-large {
+    animation: rotationleft 14s infinite linear, glow-div-orange 1s ease-in-out infinite alternate;
+}
+.circle-outter {
+    animation: rotationleft 20s infinite linear, glow-div-orange 2s ease-in-out infinite alternate;
+}
+
+.text-circle-small-outter {
+    font-size: var(--small-circle-size);
+    animation: glow-div-orange-2 1s ease-in-out 0.5s infinite alternate;
+}
+
+.text-circle-small-inner {
+    font-size: var(--small-circle-size-inner);
+    animation: glow-div-orange-2 2s ease-in-out 0.5s infinite alternate;
+}
+
+.text-circle-large {
+    font-size: var(--large-circle-size);
+    line-height: var(--large-circle-size);
+}
+
+.rotation-group {
+    transform-origin: calc(var(--x-position, 20) * 1%) calc(var(--y-position, 100) * 1px) 0;
+    transform: rotateX(calc(var(--rotate-x, 25) * 1deg)) rotateY(calc(var(--rotate-y, 25) * 1deg)) rotateZ(calc(var(--rotate-z, 25) * 1deg));
+}
+.rect-right, .rect-left {
+    transform-origin: calc(var(--x-position, 20) * 1%) calc(var(--y-position, 100) * 1px) 0;
+    fill: transparent;
+}
+
+.rect-right {
+    stroke: var(--text-color);
+    animation: rectrotationleft var(--rotate-duration) cubic-bezier(0.1, 2.7, 0.58, 1) forwards, glow-div-orange 1s ease-in-out infinite alternate, light-filters 1.5s infinite linear alternate;
+}
+.rect-left {
+    stroke: var(--text-color);
+    animation: rectrotationright var(--rotate-duration) cubic-bezier(0.1, 2.7, 0.58, 1) forwards, glow-div-orange 1.5s ease-in-out infinite alternate, light-filters 1s infinite linear alternate;
+}
+
+.polystar {
+    fill: none;
+    stroke: var(--dark-orange-1);
+    stroke-width: 5;
+}
+
+.polystar-large {
+    transform-origin: 14.2% 70.5px 0;
+    stroke-width: 10;
+    animation: polystar-rotation-right var(--rotate-duration) linear forwards, glow-div-orange 2s ease-in-out infinite alternate;
+}
+
+.polystar-medium {
+    transform-origin: 15.7% 78px 0;
+    stroke-width: 7;
+    animation: medium-polystar-rotation-left var(--rotate-duration) linear forwards, glow-div-orange 1.5s ease-in-out infinite alternate;
+}
+
+.polystar-small {
+    transform-origin: 16.9% 84.2px 0;
+    animation: small-polystar-rotation-right var(--rotate-duration) linear forwards, glow-div-orange 1s ease-in-out 1s infinite alternate;
+}
+
+.inner-line {
+    stroke: var(--dark-orange-1);
+    stroke-width: 0.7;
+    animation: glow-div-orange 1s ease-in-out infinite alternate;
+}
+
+.inner-field {
+    stroke: var(--dark-orange-1);
+    stroke-width: 0.5;
+    fill: transparent;
+    animation: glow-div-orange 1s ease-in-out 0.5s infinite alternate;
+}
+
+#tp-dfwv {
+    width: 350px;
+}
