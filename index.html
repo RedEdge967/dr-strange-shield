@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor Strange's Shield in HTML, CSS and JS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<svg id="wrapperSvg" viewBox="0 0 80 80" >
+        <svg viewBox="0 0 500 500" id="shield" height="200" width="200" x="0" y="0">
+            <defs>
+                <filter id="noise">
+                    <feTurbulence baseFrequency="0.035" xresult="colorNoise" numOctaves="6" />
+                    <feColorMatrix in="colorNoise" type="matrix" values=".7 .33 .33 0 0 .33 .33 .33 0 0 .33 .33 .33 0 0 1 1 0 1 0" />
+                    <feComposite operator="in" in2="SourceGraphic" result="monoNoise" />
+                    <feBlend in="SourceGraphic" in2="monoNoise" mode="multiply" />
+                </filter>
+                <filter id="second-noise">
+                    <feTurbulence baseFrequency="0.035" xresult="colorNoise" numOctaves="4" />
+                    <feColorMatrix in="colorNoise" type="matrix" values=".7 .33 .33 0 0 .33 .33 .33 0 0 .33 .33 .33 0 0 1 1 0 1 0" />
+                    <feComposite operator="in" in2="SourceGraphic" result="monoNoise" />
+                    <feBlend in="SourceGraphic" in2="monoNoise" mode="multiply" />
+                </filter>
+                <filter id="third-noise">
+                    <feTurbulence baseFrequency="0.035" xresult="colorNoise" numOctaves="5" />
+                    <feColorMatrix in="colorNoise" type="matrix" values=".7 .33 .33 0 0 .33 .33 .33 0 0 .33 .33 .33 0 0 1 1 0 1 0" />
+                    <feComposite operator="in" in2="SourceGraphic" result="monoNoise" />
+                    <feBlend in="SourceGraphic" in2="monoNoise" mode="multiply" />
+                </filter>
+                <filter id="light-noise">
+                    <feTurbulence baseFrequency="0.035" xresult="colorNoise" numOctaves="3" />
+                    <feColorMatrix in="colorNoise" type="matrix" values=".33 .33 .33 0 0 .33 .7 .33 0 0 .33 .33 .33 0 0 0 0 0 1 0"/>
+                    <feComposite operator="atop" in2="SourceGraphic" result="monoNoise"/>
+                    <feBlend in="SourceGraphic" in2="monoNoise" mode="multiply" />
+                </filter>
+                <filter id="lighter-noise">
+                    <feTurbulence baseFrequency="0.035" xresult="colorNoise" numOctaves="2" />
+                    <feColorMatrix in="colorNoise" type="matrix" values=".33 .33 .33 0 0 .33 .7 .33 0 0 .33 .33 .33 0 0 0 0 0 1 0"/>
+                    <feComposite operator="atop" in2="SourceGraphic" result="monoNoise"/>
+                    <feBlend in="SourceGraphic" in2="monoNoise" mode="multiply" />
+                </filter>
+                <filter id="shadow1">
+                    <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#fabd5a" flood-opacity="0.5" />
+                </filter>
+                <filter id="shadow2">
+                    <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#ffd44d" flood-opacity="0.7" />
+                </filter>
+                <filter id="glow-filter" x="-56.9%" y="-145.1%" width="217.1%" height="421.1%" filterUnits="objectBoundingBox">
+                    <feGaussianBlur stdDeviation="0.1" in="SourceGraphic" result="shadowBlurOuter1" />
+                    <feColorMatrix values="1 0 0 0 0   0 0.9 0 0 0   0 0 0.55 0 0  0 0 0 1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1" />
+                    <feGaussianBlur stdDeviation="0.1" in="SourceGraphic" result="shadowBlurOuter2" />
+                    <feColorMatrix values="0.98 0 0 0 0   0 0.75 0 0 0   0 0 0.35 0 0  0 0 0 0.9 0" type="matrix" in="shadowBlurOuter2" result="shadowMatrixOuter2" />
+                    <feGaussianBlur stdDeviation="0.1" in="SourceGraphic" result="shadowBlurOuter3" />
+                    <feColorMatrix values="1 0 0 0 0   0 0.85 0 0 0   0 0 0.3 0 0  0 0 0 0.8 0" type="matrix" in="shadowBlurOuter3" result="shadowMatrixOuter3" />
+                    <feMerge>
+                        <feMergeNode in="shadowMatrixOuter1" />
+                        <feMergeNode in="shadowMatrixOuter2" />
+                        <feMergeNode in="shadowMatrixOuter3" />
+                    </feMerge>
+                </filter>
+                <filter id="glow-mid-dark-filter" x="-56.9%" y="-145.1%" width="217.1%" height="421.1%" filterUnits="objectBoundingBox">
+                    <feGaussianBlur stdDeviation="0.15" in="SourceGraphic" result="shadowBlurOuter4" />
+                    <feColorMatrix values="1 0 0 0 0   0 0.9 0 0 0   0 0 0.55 0 0  0 0 0 1 0" type="matrix" in="shadowBlurOuter4" result="shadowMatrixOuter4" />
+                    <feGaussianBlur stdDeviation="0.15" in="SourceGraphic" result="shadowBlurOuter5" />
+                    <feColorMatrix values="0.98 0 0 0 0   0 0.75 0 0 0   0 0 0.35 0 0  0 0 0 0.8 0" type="matrix" in="shadowBlurOuter5" result="shadowMatrixOuter5" />
+                    <feGaussianBlur stdDeviation="0.15" in="SourceGraphic" result="shadowBlurOuter6" />
+                    <feColorMatrix values="0.98 0 0 0 0   0 0.75 0 0 0   0 0 0.35 0 0  0 0 0 0.8 0" type="matrix" in="shadowBlurOuter6" result="shadowMatrixOuter6" />
+                    <feMerge>
+                        <feMergeNode in="shadowMatrixOuter4" />
+                        <feMergeNode in="shadowMatrixOuter5" />
+                        <feMergeNode in="shadowMatrixOuter6" />
+                    </feMerge>
+                </filter>
+                <filter id="glow-mid-light-filter" x="-56.9%" y="-145.1%" width="217.1%" height="421.1%" filterUnits="objectBoundingBox">
+                    <feGaussianBlur stdDeviation="0.2" in="SourceGraphic" result="shadowBlurOuter7" />
+                    <feColorMatrix values="1 0 0 0 0   0 0.9 0 0 0   0 0 0.55 0 0  0 0 0 1 0" type="matrix" in="shadowBlurOuter7" result="shadowMatrixOuter7" />
+                    <feGaussianBlur stdDeviation="0.2" in="SourceGraphic" result="shadowBlurOuter8" />
+                    <feColorMatrix values="0.98 0 0 0 0   0 0.75 0 0 0   0 0 0.35 0 0  0 0 0 0.8 0" type="matrix" in="shadowBlurOuter8" result="shadowMatrixOuter8" />
+                    <feGaussianBlur stdDeviation="0.2" in="SourceGraphic" result="shadowBlurOuter9" />
+                    <feColorMatrix values="1 0 0 0 0 0 0.93 0 0 0 0 0 0.7 0 0 0 0 0 0.7 0" type="matrix" in="shadowBlurOuter9" result="shadowMatrixOuter9" />
+                    <feMerge>
+                        <feMergeNode in="shadowMatrixOuter7" />
+                        <feMergeNode in="shadowMatrixOuter8" />
+                        <feMergeNode in="shadowMatrixOuter9" />
+                    </feMerge>
+                </filter>
+                <filter id="glow-light-filter" x="-56.9%" y="-145.1%" width="217.1%" height="421.1%" filterUnits="objectBoundingBox">
+                    <feGaussianBlur stdDeviation="0.25" in="SourceGraphic" result="shadowBlurOuter10" />
+                    <feColorMatrix values="1 0 0 0 0   0 0.9 0 0 0   0 0 0.55 0 0  0 0 0 1 0" type="matrix" in="shadowBlurOuter10" result="shadowMatrixOuter10" />
+                    <feGaussianBlur stdDeviation="0.25" in="SourceGraphic" result="shadowBlurOuter11" />
+                    <feColorMatrix values="0.98 0 0 0 0   0 0.75 0 0 0   0 0 0.35 0 0  0 0 0 0.9 0" type="matrix" in="shadowBlurOuter11" result="shadowMatrixOuter11" />
+                    <feGaussianBlur stdDeviation="0.25" in="SourceGraphic" result="shadowBlurOuter12" />
+                    <feColorMatrix values="1 0 0 0 0 0 0.93 0 0 0 0 0 0.7 0 0 0 0 0 0.8 0" type="matrix" in="shadowBlurOuter12" result="shadowMatrixOuter12" />
+                    <feMerge>
+                        <feMergeNode in="shadowMatrixOuter10" />
+                        <feMergeNode in="shadowMatrixOuter11" />
+                        <feMergeNode in="shadowMatrixOuter12" />
+                    </feMerge>
+                </filter>
+            </defs>
+            <g class="rotation-group" id="lines-group">
+                <!-- Lines in the most inner-circle -->
+                <!-- Top to Bottom -->
+                <line x1="96" y1="90" x2="96" y2="110" class="inner-line" />
+                <line x1="104" y1="90" x2="104" y2="110" class="inner-line" />
+        
+                <!-- Horizontal -->
+                <line x1="90" y1="95" x2="110" y2="95" class="inner-line" />
+                <line x1="90" y1="105" x2="110" y2="105" class="inner-line" />
+        
+                <!-- Diagonal -->
+                <!-- \ -->
+                <line x1="95" y1="90" x2="110" y2="104" class="inner-line" />
+                <line x1="98" y1="90" x2="111" y2="102" class="inner-line" />
+                <line x1="90" y1="96" x2="105" y2="110" class="inner-line" />
+                <line x1="89" y1="98" x2="103" y2="111" class="inner-line" />
+                <!-- / -->
+                <line x1="103" y1="90" x2="89" y2="102" class="inner-line" />
+                <line x1="106" y1="90" x2="90" y2="104" class="inner-line" />
+                <line x1="111" y1="96" x2="95" y2="110" class="inner-line" />
+                <line x1="111" y1="99" x2="97" y2="111" class="inner-line" />
+            </g>
+            <path id="circle" fill="none" d="M 100 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
+            <text class="text-circle circle-outter">
+            <textPath href="#circle" textLength="500" class="text-circle-small-outter">
+                            </textPath>
+            </text>
+            <path id="mainCircle" fill="none" d="M 100 100 m -58, 0 a 58,58 0 1,1 116,0 a 58,58 0 1,1 -116,0" />
+            <text class="text-circle circle-large">
+            <textPath href="#mainCircle" textLength="500" class="text-circle-large">
+                ⊯⋇ᾇᾖ∰⪹⨊ϟϏᾮϗζų२≧▽ʑʓʔ௹૱₺₡৻৲૱₱₲₾₷₱₯μΞνζΘδλ⨖⨤∂∴≒₲₾₷₱≎νζΘδλ⨖⨤∂∴
+            </textPath>
+            </text>
+            <path id="innerCircle" fill="none" d="M 100 100 m -46, 0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" />
+            <text class="text-circle circle-inner">
+            <textPath href="#innerCircle" textLength="500" class="text-circle-small-inner">
+                
+            </textPath>
+            </text>
+            <g class="rotation-group">
+                <circle cx="100" cy="100" r="11" stroke-width="1" class="inner-field"></circle>
+                <circle cx="100" cy="100" r="20" stroke-width="1" class="inner-field"></circle>
+                <circle cx="100" cy="100" r="35" class="inner-field"></circle>
+                <circle cx="100" cy="100" r="41" class="inner-field"></circle>
+                <circle cx="100" cy="100" r="43" class="inner-field"></circle>
+                <circle cx="100" cy="100" r="53.5" class="inner-field"></circle>
+                <circle cx="100" cy="100" r="73" class="inner-field"></circle>
+                <rect x="75" y="75" width="50" height="50" class="rect-right"></rect>
+                <rect x="75" y="75" width="50" height="50" class="rect-left"></rect>
+                <path id="polystarSmall" class="polystar polystar-small"
+                    d="M 353.56836 0 L 262.46289 48.308594 L 255.33594 143.61328 L 183.30078 87.996094 L 93.457031 127.94141 L 62.5 228.78906 L 125.73828 302.25 L 33.939453 314.05469 L 0 402.33594 L 51.232422 498.95703 L 146.27148 506.06445 L 90.517578 578.27539 L 127.94141 662.44727 L 235.45508 695.45312 L 304.91016 635.66211 L 316.11133 722.75586 L 402.33594 755.90625 L 502.1543 702.97852 L 508.72266 615.12891 L 575.44531 666.64648 L 662.44727 627.96289 L 694.9082 522.22461 L 638.32031 456.49023 L 720.39648 445.93555 L 755.90625 353.56836 L 705.90234 259.26562 L 617.78711 252.67773 L 669.16797 186.13086 L 627.96289 93.457031 L 528.88672 63.042969 L 459.14844 123.07812 L 447.98828 36.300781 L 353.56836 0 z" />
+                <path id="polystarMedium" class="polystar polystar-medium"
+                    d="M 353.56836 0 L 262.46289 48.308594 L 255.33594 143.61328 L 183.30078 87.996094 L 93.457031 127.94141 L 62.5 228.78906 L 125.73828 302.25 L 33.939453 314.05469 L 0 402.33594 L 51.232422 498.95703 L 146.27148 506.06445 L 90.517578 578.27539 L 127.94141 662.44727 L 235.45508 695.45312 L 304.91016 635.66211 L 316.11133 722.75586 L 402.33594 755.90625 L 502.1543 702.97852 L 508.72266 615.12891 L 575.44531 666.64648 L 662.44727 627.96289 L 694.9082 522.22461 L 638.32031 456.49023 L 720.39648 445.93555 L 755.90625 353.56836 L 705.90234 259.26562 L 617.78711 252.67773 L 669.16797 186.13086 L 627.96289 93.457031 L 528.88672 63.042969 L 459.14844 123.07812 L 447.98828 36.300781 L 353.56836 0 z" />
+                <path id="polystarLarge" class="polystar polystar-large"
+                    d="M 353.56836 0 L 262.46289 48.308594 L 255.33594 143.61328 L 183.30078 87.996094 L 93.457031 127.94141 L 62.5 228.78906 L 125.73828 302.25 L 33.939453 314.05469 L 0 402.33594 L 51.232422 498.95703 L 146.27148 506.06445 L 90.517578 578.27539 L 127.94141 662.44727 L 235.45508 695.45312 L 304.91016 635.66211 L 316.11133 722.75586 L 402.33594 755.90625 L 502.1543 702.97852 L 508.72266 615.12891 L 575.44531 666.64648 L 662.44727 627.96289 L 694.9082 522.22461 L 638.32031 456.49023 L 720.39648 445.93555 L 755.90625 353.56836 L 705.90234 259.26562 L 617.78711 252.67773 L 669.16797 186.13086 L 627.96289 93.457031 L 528.88672 63.042969 L 459.14844 123.07812 L 447.98828 36.300781 L 353.56836 0 z" />
+            </g>
+        </svg>
+    </svg>
+<!-- partial -->
+  <script src='https://cdn.jsdelivr.net/npm/tweakpane@2.4.2/dist/tweakpane.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
